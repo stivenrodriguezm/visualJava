@@ -13,25 +13,42 @@ public class IngresarPersona extends JFrame{
     private JTextField txtApellido;
     private JLabel lblApellido;
     private JButton btnGuardar;
+    private JComboBox cmbIdioma;
+    private JLabel lblIdioma;
+    private JCheckBox chbTerminos;
+    private JRadioButton rbtMasculino;
+    private JRadioButton rbtFemenino;
+    private JRadioButton rbtOtro;
+    private JRadioButton rbtNoIndica;
+
     public IngresarPersona () {
         this.setTitle("Ventana Ingresar Persona");
         this.setContentPane(plnPirncipal);
         this.setVisible(true);
-        this.setSize(400,300);
+        this.setSize(520,320);
         btnGuardar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String codigo = txtCodigo.getText();
                 String nombre = txtNombre.getText();
                 String apellido = txtApellido.getText();
+                String idioma = cmbIdioma.getSelectedItem().toString();
+                String aceptoTerminos = (chbTerminos.isSelected())?"Si":"No";
+                String genero = (rbtMasculino.isSelected())?"Masculino":
+                                (rbtFemenino.isSelected())?"Femenino":
+                                (rbtOtro.isSelected())?"Otro":
+                                (rbtNoIndica.isSelected())?"No indica":"";
 
 
-                String mensaje = "tus datos son: \n" +
-                                 " Codigo: " + codigo + "\n" +
+                String mensaje = "Tus datos son: \n" +
+                                 "Código: " + codigo + "\n" +
                                  "Nombre: " + nombre + "\n" +
-                                 "Apelldio: " + apellido + "\n" ;
+                                 "Apellido: " + apellido + "\n"+
+                                 "Idioma: " + idioma + "\n"+
+                                 "Acepta terminos: " + aceptoTerminos+"\n"+
+                                 "Género: " + genero;
 
-                JOptionPane.showMessageDialog(btnGuardar, "Guardado con exito");
+                JOptionPane.showMessageDialog(btnGuardar, mensaje);
             }
         });
     }
